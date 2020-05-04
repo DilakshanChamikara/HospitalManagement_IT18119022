@@ -37,7 +37,7 @@ public class Hospital {
 			}
 
 			// Create a prepared statement
-			String query = " INSERT INTO hospital_t('hosID','hosCode','hosName','password','address','mobile','email','webAddress')"
+			String query = " INSERT INTO hospital_t(`hosID`,`hosCode`,`hosName`,`password`,`address`,`mobile`,`email`,`webAddress`)"
 					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
