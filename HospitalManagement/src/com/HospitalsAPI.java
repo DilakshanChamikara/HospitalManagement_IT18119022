@@ -55,13 +55,13 @@ public class HospitalsAPI extends HttpServlet {
 		Map paras = getParasMap(request);
 		
 		String output = hosObj.updateHospital(paras.get("hidHospitalIDSave").toString(),
-		paras.get("hosCode").toString(),
-		paras.get("hosName").toString(),
+		paras.get("hosCode").toString().replace("+", " "),
+		paras.get("hosName").toString().replace("+", " "),
 		paras.get("password").toString(),
-		paras.get("address").toString(),
+		paras.get("address").toString().replace("+", " ").replace("%2C", ",").replace("%3A", ":"),
 		paras.get("mobile").toString(),
-		paras.get("email").toString(),
-		paras.get("webAddress").toString());
+		paras.get("email").toString().replace("+", " ").replace("%2C", ",").replace("%3A", ":").replace("%40", "@").replace("%2F", "/"),
+		paras.get("webAddress").toString().replace("+", " ").replace("%2C", ",").replace("%3A", ":").replace("%40", "@").replace("%2F", "/"));
 		
 		response.getWriter().write(output);
 		
