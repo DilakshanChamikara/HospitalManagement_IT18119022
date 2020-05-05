@@ -1,8 +1,7 @@
-$(document).ready(function() {
-	if ($("#alertSuccess").text().trim() == "") {
-		$("#alertSuccess").hide();
-	}
+$(document).ready(function () {
+	$("#alertSuccess").hide(); 
 	$("#alertError").hide();
+	
 });
 
 // SAVE 
@@ -32,17 +31,14 @@ $("#alertError").hide();
 		data : $("#formHospital").serialize(),
 		dataType : "text",
 		complete : function(response, status) {
-			onItemSaveComplete(response.responseText, status);
+			onHospitalSaveComplete(response.responseText, status);
 		}
 	});
-
-	// $("#formHospital").submit();
-
 });
 
 
 
-function onItemSaveComplete(response, status) {
+function onHospitalSaveComplete(response, status) {
 	if (status == "success") {
 		var resultSet = JSON.parse(response);
 		if (resultSet.status.trim() == "success") {
@@ -74,14 +70,14 @@ $(document).on("click", ".btnRemove", function(event) {
 		data : "hosID=" + $(this).data("hosid"),
 		dataType : "text",
 		complete : function(response, status) {
-			onItemDeleteComplete(response.responseText, status);
+			onHospitalDeleteComplete(response.responseText, status);
 		}
 	});
 });
 
 
 
-function onItemDeleteComplete(response, status) {
+function onHospitalDeleteComplete(response, status) {
 	if (status == "success") {
 		var resultSet = JSON.parse(response);
 		if (resultSet.status.trim() == "success") {
