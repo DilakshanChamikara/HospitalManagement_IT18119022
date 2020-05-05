@@ -1,3 +1,4 @@
+<%@page import="com.Hospital"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -67,10 +68,10 @@ class="btn btn-primary">
   
 <br>
    
-   <%
-     // Item itemobj = new Item();
-    // out.print(itemobj.readItems());
-   %>
+<%
+	Hospital hosObj = new Hospital();
+	out.print(hosObj.readHospital());
+%>
       
 </div>
 </div>

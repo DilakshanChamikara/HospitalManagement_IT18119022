@@ -55,11 +55,15 @@ public class Hospital {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Inserted successfully";
+
+			String newHospitals = readHospital();
+			output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}";
+
+			// output = "Inserted successfully";
 
 		} catch (Exception e) {
 
-			output = "Error while inserting the hospital.";
+			output = "{\"status\":\"error\", \"data\":\"Error while inserting the hospital.\"}";
 			System.err.println(e.getMessage());
 
 		}
@@ -105,7 +109,8 @@ public class Hospital {
 				String webAddress = rs.getString("webAddress");
 
 				// Add into the html table
-				output += "<tr><td>" + hosCode + "</td>";
+				output += "<tr><td><input id='hidHospitalIDUpdate'" + "name='hidHospitalIDUpdate' type='hidden'"
+						+ "value='" + hosID + "'>" + hosCode + "</td>";
 				output += "<td>" + hosName + "</td>";
 				output += "<td>" + password + "</td>";
 				output += "<td>" + address + "</td>";
@@ -114,10 +119,10 @@ public class Hospital {
 				output += "<td>" + webAddress + "</td>";
 
 				// buttons
-				output += "<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"
-						+ "<td><form method=\"post\" action=\"hospitals.jsp\">"
-						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
-						+ "<input name=\"hosID\" type=\"hidden\" value=\"" + hosID + "\">" + "</form></td></tr>";
+				output += "<td><input name='btnUpdate' type='button'" + "value='Update'"
+						+ "class='btnUpdate btn btn-secondary'></td>" + "<td><input name='btnRemove' type='button'"
+						+ "value='Remove'" + "class='btnRemove btn btn-danger' data-hosid='" + hosID + "'>"
+						+ "</td></tr>";
 			}
 
 			con.close();
@@ -168,11 +173,14 @@ public class Hospital {
 			preparedStmt.execute();
 			con.close();
 
-			output = "Updated successfully";
+			String newHospitals = readHospital();
+			output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}";
+
+			// output = "Updated successfully";
 
 		} catch (Exception e) {
 
-			output = "Error while updating the hospital.";
+			output = "{\"status\":\"error\", \"data\":\"Error while updating the hospital.\"}";
 			System.err.println(e.getMessage());
 
 		}
@@ -206,11 +214,14 @@ public class Hospital {
 			preparedStmt.execute();
 			con.close();
 
-			output = "Deleted successfully";
+			String newHospitals = readHospital();
+			output = "{\"status\":\"success\", \"data\": \"" + newHospitals + "\"}";
+
+			// output = "Deleted successfully";
 
 		} catch (Exception e) {
 
-			output = "Error while deleting the hospital.";
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the hospital.\"}";
 			System.err.println(e.getMessage());
 
 		}
