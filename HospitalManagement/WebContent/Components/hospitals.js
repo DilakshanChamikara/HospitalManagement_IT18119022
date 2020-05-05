@@ -124,6 +124,12 @@ function validateHospitalForm() {
 	if ($("#hosCode").val().trim() == "") {
 		return "Insert Hospital Code.";
 	}
+	
+	// Hospital Code is numerical value
+	var tmpCode = $("#hosCode").val().trim();
+	if (!$.isNumeric(tmpCode)) {
+		return "Insert a numerical value for Hospital Code.";
+	}
 
 	// Name
 	if ($("#hosName").val().trim() == "") {
