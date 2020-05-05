@@ -62,16 +62,18 @@ class="form-control form-control-sm">
 </form>
 
 <div id="alertSuccess" class="alert alert-success"></div>
-
 <div id="alertError" class="alert alert-danger"></div>
   
 <br>
+
+<div id="divUsersGrid">
    
 <%
 	Hospital hosObj = new Hospital();
 	out.print(hosObj.readHospital());
 %>
       
+</div>      
 </div>
 </div>
 </div>
