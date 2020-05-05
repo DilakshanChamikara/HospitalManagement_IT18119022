@@ -1,4 +1,8 @@
 package com;
+import com.Hospital;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,32 +16,87 @@ import javax.servlet.http.HttpServletResponse;
 public class HospitalsAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	Hospital hosObj = new Hospital();
 	
     public HospitalsAPI() {
         super();
         
     }
 
-
+    
+    //GET
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-
+	
+	//INSERT
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doGet(request, response);
+		/* doGet(request, response); */
+		
+		String output = hosObj.insertHospital(request.getParameter("hosCode"),
+				request.getParameter("hosName"),
+				request.getParameter("password"),
+				request.getParameter("address"),
+				request.getParameter("mobile"),
+				request.getParameter("email"),
+				request.getParameter("webAddress"));
+		
+				response.getWriter().write(output);
+		
 	}
 
 
+	//UPDATE
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	}
-
-
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Map paras = getParasMap(request);
+		
+		String output = hosObj.updateHospital(paras.get("hidHospitalIDSave").toString(),
+		paras.get("hosCode").toString(),
+		paras.get("hosName").toString(),
+		paras.get("password").toString(),
+		paras.get("address").toString(),
+		paras.get("mobile").toString(),
+		paras.get("email").toString(),
+		paras.get("webAddress").toString());
+		
+		response.getWriter().write(output);
 		
 	}
 
+
+	//DELETE
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Map paras = getParasMap(request);
+		
+		String output = hosObj.deleteHospital(paras.get("hosID").toString());
+		
+		response.getWriter().write(output);
+		
+	}
+	
+	
+	//MAP
+	private static Map getParasMap(HttpServletRequest request) {
+		Map<String, String> map = new HashMap<String, String>();
+		try {
+			Scanner scanner = new Scanner(request.getInputStream(), "UTF-8");
+			String queryString = scanner.hasNext() ? scanner.useDelimiter("\\A").next() : "";
+			scanner.close();
+			String[] params = queryString.split("&");
+			for (String param : params) {
+				String[] p = param.split("=");
+				map.put(p[0], p[1]);
+			}
+		} catch (Exception e) {
+
+		}
+		return map;
+	}
+	
+	
 }
