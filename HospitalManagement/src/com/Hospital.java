@@ -2,7 +2,9 @@ package com;
 
 import java.sql.*;
 
-public class Hospital {
+import javax.servlet.http.HttpServlet;
+
+public class Hospital extends HttpServlet {
 
 	// Connect to DB
 	private Connection connect() {
