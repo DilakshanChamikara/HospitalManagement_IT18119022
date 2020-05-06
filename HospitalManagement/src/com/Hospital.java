@@ -86,7 +86,7 @@ public class Hospital {
 			}
 
 			// Prepare the html table to be displayed
-			output = "<table border=\"1\"><tr>" + "<th>Hospital Code</th>" + "<th>Hospital Name</th>"
+			output = "<table border='1'><tr>" + "<th>Hospital Code</th>" + "<th>Hospital Name</th>"
 					+ "<th>Password</th>" + "<th>Address</th>" + "<th>Contact Number</th>" + "<th>Email</th>"
 					+ "<th>Web Address</th>" + "<th>Update</th><th>Remove</th></tr>";
 
