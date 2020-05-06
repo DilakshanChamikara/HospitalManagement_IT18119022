@@ -66,7 +66,7 @@ class="form-control form-control-sm">
   
 <br>
 
-<div id="divUsersGrid">
+<div id="divHospitalsGrid">
    
 <%
 	Hospital hosObj = new Hospital();

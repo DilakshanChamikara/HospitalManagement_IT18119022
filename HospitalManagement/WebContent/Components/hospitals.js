@@ -1,7 +1,8 @@
-$(document).ready(function () {
-	$("#alertSuccess").hide(); 
+$(document).ready(function() {
+	if ($("#alertSuccess").text().trim() == "") {
+		$("#alertSuccess").hide();
+	}
 	$("#alertError").hide();
-	
 });
 
 // SAVE 
@@ -44,7 +45,7 @@ function onHospitalSaveComplete(response, status) {
 		if (resultSet.status.trim() == "success") {
 			$("#alertSuccess").text("Successfully saved.");
 			$("#alertSuccess").show();
-			$("#divItemsGrid").html(resultSet.data);
+			$("#divHospitalsGrid").html(resultSet.data);
 		} else if (resultSet.status.trim() == "error") {
 			$("#alertError").text(resultSet.data);
 			$("#alertError").show();
@@ -83,7 +84,7 @@ function onHospitalDeleteComplete(response, status) {
 		if (resultSet.status.trim() == "success") {
 			$("#alertSuccess").text("Successfully deleted.");
 			$("#alertSuccess").show();
-			$("#divItemsGrid").html(resultSet.data);
+			$("#divHospitalsGrid").html(resultSet.data);
 		} else if (resultSet.status.trim() == "error") {
 			$("#alertError").text(resultSet.data);
 			$("#alertError").show();
