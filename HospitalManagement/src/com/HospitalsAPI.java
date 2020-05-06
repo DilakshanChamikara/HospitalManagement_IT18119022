@@ -18,6 +18,9 @@ public class HospitalsAPI extends HttpServlet {
        
 	Hospital hosObj = new Hospital();
 	
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
     public HospitalsAPI() {
         super();
         
@@ -25,6 +28,10 @@ public class HospitalsAPI extends HttpServlet {
 
     
     //GET
+    /**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -32,6 +39,10 @@ public class HospitalsAPI extends HttpServlet {
 
 	
 	//INSERT
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		/* doGet(request, response); */
@@ -50,6 +61,9 @@ public class HospitalsAPI extends HttpServlet {
 
 
 	//UPDATE
+	/**
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Map paras = getParasMap(request);
@@ -69,6 +83,9 @@ public class HospitalsAPI extends HttpServlet {
 
 
 	//DELETE
+	/**
+	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
+	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Map paras = getParasMap(request);
